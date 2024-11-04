@@ -1,0 +1,31 @@
+### Create a text 
+POST http://localhost:3000/texts
+Content-Type: application/json
+
+{
+    "content" : "dvdvfdfvdfvdf",
+    "level" : "hard"
+}
+
+### Read all texts
+GET http://localhost:3000/texts
+
+### Read all texts with level = medium
+Get {{baseUrl}}/texts/?level=medium
+
+### Read a single text
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/texts/2
+
+### Delete a single text identified by 5
+DELETE {{baseUrl}}/texts/5
+
+### Update the text identified by 4
+PATCH {{baseUrl}}/texts/4
+Content-Type: application/json
+
+{
+    "content":"dvbdfvdhbfgnjkscdfdunfgbfdd",
+    "level":"medium"
+}
+
