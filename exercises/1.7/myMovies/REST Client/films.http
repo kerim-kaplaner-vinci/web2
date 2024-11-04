@@ -15,7 +15,7 @@ GET http://localhost:3000/films
 @baseUrl = http://localhost:3000
 GET {{baseUrl}}/films/2
 
-### Read all films >= 106 minutes
+### Read all films >= 107 minutes
 Get {{baseUrl}}/films/?minimum-duration=107
 
 ### Delete a single film identified by 3
