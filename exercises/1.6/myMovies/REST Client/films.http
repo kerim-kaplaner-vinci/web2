@@ -1,0 +1,41 @@
+### Create a film 
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+    "title" : "Inception",
+    "director" : "Christopher Nolan"
+}
+
+### Read all films
+GET http://localhost:3000/films
+
+### Read a single film
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films/2
+
+### Read all films >= 106 minutes
+Get {{baseUrl}}/films/?minimum-duration=107
+
+### Delete a single film identified by 3
+DELETE {{baseUrl}}/films/3
+
+### Update the film identified by 4
+PATCH {{baseUrl}}/films/4
+Content-Type: application/json
+
+{
+    "title":"Le Prestige",
+    "duration":130
+}
+
+### Update the film identified by 5
+PUT {{baseUrl}}/films/3
+Content-Type: application/json
+
+{
+    "title":"Le Prestige",
+    "director":"Christopher Nolan",
+    "duration":130
+}
+
