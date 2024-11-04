@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Update the film identified by 5
-PUT {{baseUrl}}/films/3
+PUT {{baseUrl}}/films/5
 Content-Type: application/json
 
 {
