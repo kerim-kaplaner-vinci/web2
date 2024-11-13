@@ -3,40 +3,53 @@ const App = () => {
 
   const cinema1Name = "UGC DeBrouckère";
 
-  const movie1 = {
-    title: "HAIKYU-THE DUMPSTER BATTLE",
-    director: "Susumu Mitsunaka",
-  };
-  const movie2 = {
-    title: "GOODBYE JULIA ",
-    director: "Mohamed Kordofani",
-  };
+  const moviesCinema1 = [
+    {
+      title: "HAIKYU-THE DUMPSTER BATTLE",
+      director: "Susumu Mitsunaka",
+    },
+    {
+      title: "GOODBYE JULIA",
+      director: "Mohamed Kordofani",
+    },
+    {
+      title: "INCEPTION",
+      director: "Christopher Nolan",
+    },
+    {
+      title: "PARASITE",
+      director: "Bong Joon-ho",
+    },
+  ];
 
   const cinema2Name = "UGC Toison d'Or";
-  const movie3 = {
-    title: "THE WATCHERS",
-    director: "Ishana Night Shyamalan",
-  };
-  const movie4 = {
-    title: "BAD BOYS: RIDE OR DIE",
-    director: "Adil El Arbi, Bilall Fallah",
-  };
+
+  const moviesCinema2 = [
+    {
+      title: "THE WATCHERS",
+      director: "Ishana Night Shyamalan",
+    },
+    {
+      title: "BAD BOYS: RIDE OR DIE",
+      director: "Adil El Arbi, Bilall Fallah",
+    },
+    {
+      title: "TENET",
+      director: "Christopher Nolan",
+    },
+    {
+      title: "THE IRISHMAN",
+      director: "Martin Scorsese",
+    },
+  ];
 
   return (
     <div>
       <PageTitle title={pageTitle} />
 
-      <Cinema
-        name={cinema1Name}
-        movie1={movie1}
-        movie2={movie2}
-      />
+      <Cinema name={cinema1Name} movies={moviesCinema1} />
 
-      <Cinema
-        name={cinema2Name}
-        movie1={movie3}
-        movie2={movie4}
-      />
+      <Cinema name={cinema2Name} movies={moviesCinema2} />
     </div>
   );
 };
@@ -47,9 +60,7 @@ interface TitleProps {
 }
 
 const PageTitle = (props: TitleProps) => {
-  return (
-    <h1>{props.title}</h1>
-  );
+  return <h1>{props.title}</h1>;
 };
 
 //Type pour un film
@@ -61,8 +72,7 @@ interface Movie {
 // Props pour le composant CinemaProps
 interface CinemaProps {
   name: string;
-  movie1: Movie;
-  movie2: Movie;
+  movies: Movie[];
 }
 
 const Cinema = (props: CinemaProps) => {
@@ -70,12 +80,22 @@ const Cinema = (props: CinemaProps) => {
     <main>
       <div>
         <h2>{props.name}</h2>
-        <p> 
-          <strong>{props.movie1.title}</strong> directed by {props.movie1.director} 
-        </p> 
-        <p> 
-          <strong>{props.movie2.title}</strong> directed by {props.movie2.director}
-        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Director</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.movies.map((movie) => (
+              <tr>
+                <td>{movie.title}</td>
+                <td>{movie.director}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </main>
   );
