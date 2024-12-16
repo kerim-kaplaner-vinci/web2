@@ -1,3 +1,9 @@
+import Header from "../Header";
+import Cinema from "../Cinema";
+import PageTitle from "../PageTitle";
+import Footer from "../Footer";
+import logoUrl from "../../assets/images/js-logo.png";
+
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
 
@@ -45,59 +51,25 @@ const App = () => {
 
   return (
     <div>
+      <Header logoUrl={logoUrl}>
+        <nav>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </Header>
+
       <PageTitle title={pageTitle} />
 
       <Cinema name={cinema1Name} movies={moviesCinema1} />
-
       <Cinema name={cinema2Name} movies={moviesCinema2} />
+
+      <Footer logoUrl={logoUrl}>
+        <p>&copy; 2023 Movie Info</p>
+      </Footer>
     </div>
-  );
-};
-
-// Props pour le composant PageTitle
-interface TitleProps {
-  title: string;
-}
-
-const PageTitle = (props: TitleProps) => {
-  return <h1>{props.title}</h1>;
-};
-
-//Type pour un film
-interface Movie {
-  title: string;
-  director: string;
-}
-
-// Props pour le composant CinemaProps
-interface CinemaProps {
-  name: string;
-  movies: Movie[];
-}
-
-const Cinema = (props: CinemaProps) => {
-  return (
-    <main>
-      <div>
-        <h2>{props.name}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Director</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.movies.map((movie) => (
-              <tr>
-                <td>{movie.title}</td>
-                <td>{movie.director}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </main>
   );
 };
 
