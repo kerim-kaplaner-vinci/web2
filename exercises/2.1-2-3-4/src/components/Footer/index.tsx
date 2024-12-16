@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css'; // Ajoutez cette ligne pour importer le CSS
 
 interface FooterProps {
   logoUrl: string;
@@ -8,7 +9,7 @@ interface FooterProps {
 const Footer = (props: FooterProps) => {
   return (
     <footer>
-      <img src={props.logoUrl} alt="Logo" />
+      <img src={props.logoUrl} alt="Logo" className='logo' />
       {props.children}
     </footer>
   );
