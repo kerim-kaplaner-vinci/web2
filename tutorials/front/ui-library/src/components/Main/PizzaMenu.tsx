@@ -38,7 +38,7 @@ const PizzaMenu = ({ pizzas }: PizzaMenuProps) => {
         <TableHead>
           <TableRow>
             <TableCell>Pizza</TableCell>
-            <TableCell>æ©escription</TableCell>
+            <TableCell>Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
