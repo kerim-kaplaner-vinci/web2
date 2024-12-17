@@ -9,7 +9,7 @@ interface Movie {
 
 interface MovieContext {
   movies: Movie[];
-  onMovieAdded: (movie: Movie) => void;
+  onMovieAdded: (newMovie: Movie) => void;
 }
 
 export type { Movie, MovieContext };

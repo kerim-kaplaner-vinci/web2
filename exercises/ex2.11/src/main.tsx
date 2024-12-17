@@ -1,12 +1,13 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./index.css";
-import HomePage from "./components/HomePage";
-import CinemaPage from "./components/Cinema";
-import MovieListPage from "./components/MovieList";
-import App from "./components/App/App";
-import AddMoviePage from "./components/AddMovieForm";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./components/pages/HomePage";
+import App from "./components/App";
+import CinemaPage from "./components/pages/CinemaPage";
+import MovieListPage from "./components/pages/MovieListPage";
+import AddMoviePage from "./components/pages/AddMoviePage";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "cinema",
+        path: "cinemas",
         element: <CinemaPage />,
       },
       {
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </React.StrictMode>
 );

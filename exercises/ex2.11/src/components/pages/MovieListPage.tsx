@@ -1,12 +1,14 @@
 import MovieListView from "../MovieListView";
+import PageTitle from "../PageTitle";
 import { MovieContext } from "../../types";
 import { useOutletContext } from "react-router-dom";
+
 const MovieListPage = () => {
   const { movies }: MovieContext = useOutletContext();
 
   return (
     <div>
-      <h1>"My favorite movies"</h1>
+      <PageTitle title="My favorite movies" />
 
       <MovieListView movies={movies} />
 
@@ -17,4 +19,5 @@ const MovieListPage = () => {
     </div>
   );
 };
+
 export default MovieListPage;

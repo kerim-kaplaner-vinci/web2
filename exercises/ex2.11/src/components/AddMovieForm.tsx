@@ -1,11 +1,12 @@
-import { Movie } from "../../types";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
+import { Movie } from "../types";
+import "./AddMovieForm.css";
 
 interface AddMovieFormProps {
-  onAddMovie: (movie: Movie) => void;
+  onMovieAdded: (movie: Movie) => void;
 }
 
-const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
+const AddMovieForm = ({ onMovieAdded }: AddMovieFormProps) => {
   const [title, setTitle] = useState("");
   const [director, setDirector] = useState("");
   const [duration, setDuration] = useState(0);
@@ -13,17 +14,9 @@ const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
   const [description, setDescription] = useState("");
   const [budget, setBudget] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    const newMovie: Movie = {
-      title,
-      director,
-      duration,
-      imageUrl,
-      description,
-      budget,
-    };
-    onAddMovie(newMovie);
+    onMovieAdded({ title, director, duration, imageUrl, description, budget });
     setTitle("");
     setDirector("");
     setDuration(0);
@@ -31,12 +24,10 @@ const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
     setDescription("");
     setBudget(0);
   };
-
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add a New Movie</h2>
       <div>
-        <label>Title:</label>
+        <label>Titre :</label>
         <input
           type="text"
           value={title}
@@ -45,7 +36,7 @@ const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
         />
       </div>
       <div>
-        <label>Director:</label>
+        <label>Réalisateur :</label>
         <input
           type="text"
           value={director}
@@ -54,16 +45,16 @@ const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
         />
       </div>
       <div>
-        <label>Duration (minutes):</label>
+        <label>Durée :</label>
         <input
           type="number"
           value={duration}
-          onChange={(e) => setDuration(Number(e.target.value))}
+          onChange={(e) => setDuration(parseInt(e.target.value))}
           required
         />
       </div>
       <div>
-        <label>Image URL:</label>
+        <label>URL de l'image :</label>
         <input
           type="text"
           value={imageUrl}
@@ -71,21 +62,21 @@ const AddMovieForm = ({ onAddMovie }: AddMovieFormProps) => {
         />
       </div>
       <div>
-        <label>Description:</label>
+        <label>Description :</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
       <div>
-        <label>Budget (million):</label>
+        <label>Budget :</label>
         <input
           type="number"
           value={budget}
-          onChange={(e) => setBudget(Number(e.target.value))}
+          onChange={(e) => setBudget(parseInt(e.target.value))}
         />
       </div>
-      <button type="submit">Add Movie</button>
+      <button type="submit">Ajouter</button>
     </form>
   );
 };
